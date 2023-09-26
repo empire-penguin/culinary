@@ -19,9 +19,6 @@
 // Example uses GPIO 2
 #define GPIO 2
 
-
-
-
 int main()
 {
     stdio_init_all();
@@ -32,16 +29,14 @@ int main()
     // Set datasheet for more information on function select
     gpio_set_function(UART_TX_PIN, GPIO_FUNC_UART);
     gpio_set_function(UART_RX_PIN, GPIO_FUNC_UART);
-    
 
     // GPIO initialisation.
     // We will make this GPIO an input, and pull it up by default
     gpio_init(GPIO);
     gpio_set_dir(GPIO, GPIO_IN);
     gpio_pull_up(GPIO);
-    
 
-    // Example of using the HW divider. The pico_divider library provides a more user friendly set of APIs 
+    // Example of using the HW divider. The pico_divider library provides a more user friendly set of APIs
     // over the divider (and support for 64 bit divides), and of course by default regular C language integer
     // divisions are redirected thru that library, meaning you can just use C level `/` and `%` operators and
     // gain the benefits of the fast hardware divider.
@@ -55,7 +50,6 @@ int main()
     int32_t udivisor = 321;
     divmod_result_t uresult = hw_divider_divmod_u32(udividend, udivisor);
     printf("%d/%d = %d remainder %d\n", udividend, udivisor, to_quotient_u32(uresult), to_remainder_u32(uresult));
-
 
     puts("Hello, world!");
 
